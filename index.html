@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maa Durga AI App</title>
+<style>
+body{background:#0f0f0f;color:white;font-family:Arial;text-align:center;padding:15px}
+textarea{width:92%;padding:15px;border-radius:12px;background:#222;color:white;font-size:18px;border:1px solid #444}
+button{width:95%;padding:16px;margin-top:12px;border-radius:12px;border:0;font-size:20px;font-weight:bold;background:#ff2a2a;color:white}
+#result img{width:100%;border-radius:15px;margin-top:15px}
+.card{background:#1e1e1e;padding:12px;border-radius:12px;margin-top:10px}
+</style>
+</head>
+<body>
+<h2>🙏 माँ दुर्गा AI फोटो ऐप</h2>
+<textarea id="prompt" rows="4" placeholder="यहाँ लिखो: माँ दुर्गा शेर पर बैठी हैं, लाल साड़ी..."></textarea>
+<button onclick="generate()">📸 फोटो बनाओ</button>
+<div id="result"></div>
+
+<script>
+function generate(){
+let text=document.getElementById('prompt').value;
+if(!text){alert('कुछ लिखो पहले');return;}
+document.getElementById('result').innerHTML='<div class=card>⏳ बना रहा हूँ... 5 सेकंड रुको</div>';
+let finalPrompt=encodeURIComponent(text + ', indian goddess Durga, divine beautiful, 8k ultra realistic');
+let url='https://image.pollinations.ai/prompt/'+finalPrompt+'?width=1024&height=1280&seed='+Date.now()+'&nologo=true';
+document.getElementById('result').innerHTML='<img src='+url+'><div class=card>✅ बन गया! फोटो पर दबा के सेव कर लो</div>';
+}
+</script>
+</body>
+</html>
